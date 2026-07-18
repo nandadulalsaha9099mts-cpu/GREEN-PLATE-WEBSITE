@@ -88,11 +88,31 @@
         const menuList = document.getElementById('menuList');
         const addItemForm = document.getElementById('addItemForm');
 
+        // LocalStorage Initialization & Mock Data
+        const initialMenu = [
+            { id: 1, name: "Wood-Fired Margherita", description: "Classic San Marzano tomato sauce, fresh mozzarella, and basil leaves.", price: 15, category: "Pizza", imageUrl: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&q=80" },
+            { id: 2, name: "Tandoori Mixed Grill", description: "Juicy chicken tikka, lamb seekh kebabs, and tandoori prawns.", price: 25, category: "Grill", imageUrl: "https://images.unsplash.com/photo-1628294895950-9805252327bc?w=800&q=80" },
+            { id: 3, name: "Creamy Butter Chicken", description: "Tender chicken simmered in a rich tomato and butter sauce.", price: 18, category: "Curry", imageUrl: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=800&q=80" },
+            { id: 4, name: "Mushroom Truffle Pasta", description: "Al dente penne tossed in creamy truffle sauce with wild mushrooms.", price: 22, category: "Pasta", imageUrl: "https://images.unsplash.com/photo-1621996311210-ea007f3ccce8?w=800&q=80" },
+            { id: 5, name: "Grilled Salmon Asparagus", description: "Fresh Atlantic salmon with lemon butter and charred asparagus.", price: 28, category: "Seafood", imageUrl: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=800&q=80" }
+        ];
+
+        const initialOrders = [
+            { id: 101, customer_name: "Alice Johnson", customer_phone: "+91 9876543210", customer_email: "alice@example.com", item_name: "Wood-Fired Margherita", quantity: 2, total_price: 30, payment_method: "UPI", timestamp: new Date(Date.now() - 3600000).toISOString() },
+            { id: 102, customer_name: "Bob Smith", customer_phone: "+91 9123456789", customer_email: "bob@example.com", item_name: "Creamy Butter Chicken", quantity: 1, total_price: 18, payment_method: "CARD", timestamp: new Date(Date.now() - 7200000).toISOString() }
+        ];
+
+        if (!localStorage.getItem('greenplate_menu')) {
+            localStorage.setItem('greenplate_menu', JSON.stringify(initialMenu));
+        }
+        if (!localStorage.getItem('greenplate_orders')) {
+            localStorage.setItem('greenplate_orders', JSON.stringify(initialOrders));
+        }
+
         // Fetch and display items
-        async function fetchMenuItems() {
+        function fetchMenuItems() {
             try {
-                const response = await fetch('/api/menu');
-                const items = await response.json();
+                const items = JSON.parse(localStorage.getItem('greenplate_menu') || '[]');
                 
                 menuList.innerHTML = '';
                 if(items.length === 0) {
@@ -120,63 +140,53 @@
                 });
             } catch (error) {
                 console.error('Error fetching menu:', error);
-                menuList.innerHTML = '<div class="text-center text-red-500 py-8">Error loading items. Is the server running?</div>';
+                menuList.innerHTML = '<div class="text-center text-red-500 py-8">Error loading items.</div>';
             }
         }
 
         // Add new item
-        addItemForm.addEventListener('submit', async (e) => {
+        addItemForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
+            const items = JSON.parse(localStorage.getItem('greenplate_menu') || '[]');
+            const newId = items.length > 0 ? Math.max(...items.map(i => i.id)) + 1 : 1;
+            
             const newItem = {
+                id: newId,
                 name: document.getElementById('name').value,
                 description: document.getElementById('description').value,
-                price: document.getElementById('price').value,
+                price: parseFloat(document.getElementById('price').value),
                 category: document.getElementById('category').value,
                 imageUrl: document.getElementById('imageUrl').value
             };
 
-            try {
-                const response = await fetch('/api/menu', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(newItem)
-                });
-                
-                if (response.ok) {
-                    addItemForm.reset();
-                    fetchMenuItems();
-                } else {
-                    alert("Failed to add item");
-                }
-            } catch (error) {
-                console.error('Error adding item:', error);
-            }
+            items.push(newItem);
+            localStorage.setItem('greenplate_menu', JSON.stringify(items));
+            
+            addItemForm.reset();
+            fetchMenuItems();
         });
 
         // Delete item
-        async function deleteItem(id) {
+        function deleteItem(id) {
             if(!confirm("Are you sure you want to delete this item?")) return;
             
-            try {
-                const response = await fetch(`/api/menu/${id}`, { method: 'DELETE' });
-                if (response.ok) {
-                    fetchMenuItems();
-                } else {
-                    alert("Failed to delete item");
-                }
-            } catch (error) {
-                console.error('Error deleting item:', error);
-            }
+            let items = JSON.parse(localStorage.getItem('greenplate_menu') || '[]');
+            items = items.filter(item => item.id !== id);
+            localStorage.setItem('greenplate_menu', JSON.stringify(items));
+            
+            fetchMenuItems();
         }
 
         // Fetch and display orders
-        async function fetchOrders() {
+        function fetchOrders() {
             const ordersList = document.getElementById('ordersList');
             try {
-                const response = await fetch('/api/orders');
-                const orders = await response.json();
+                const orders = JSON.parse(localStorage.getItem('greenplate_orders') || '[]');
                 
+                // Sort by newest first
+                orders.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
                 ordersList.innerHTML = '';
                 if(orders.length === 0) {
                     ordersList.innerHTML = '<tr><td colspan="6" class="text-center p-8 text-gray-500">No orders placed yet.</td></tr>';
