@@ -258,8 +258,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     const menuGrid = document.getElementById('menu-grid');
     
     try {
-        const response = await fetch('/api/menu');
-        const items = await response.json();
+        const items = [
+            { id: 1, name: "Wood-Fired Margherita", description: "Classic San Marzano tomato sauce, fresh mozzarella, and basil leaves.", price: 15, category: "Pizza", imageUrl: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&q=80" },
+            { id: 2, name: "Tandoori Mixed Grill", description: "Juicy chicken tikka, lamb seekh kebabs, and tandoori prawns.", price: 25, category: "Grill", imageUrl: "https://images.unsplash.com/photo-1628294895950-9805252327bc?w=800&q=80" },
+            { id: 3, name: "Creamy Butter Chicken", description: "Tender chicken simmered in a rich tomato and butter sauce.", price: 18, category: "Curry", imageUrl: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=800&q=80" },
+            { id: 4, name: "Mushroom Truffle Pasta", description: "Al dente penne tossed in creamy truffle sauce with wild mushrooms.", price: 22, category: "Pasta", imageUrl: "https://images.unsplash.com/photo-1621996311210-ea007f3ccce8?w=800&q=80" },
+            { id: 5, name: "Grilled Salmon Asparagus", description: "Fresh Atlantic salmon with lemon butter and charred asparagus.", price: 28, category: "Seafood", imageUrl: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=800&q=80" }
+        ];
         
         if(items.length === 0) {
             menuGrid.innerHTML = '<div class="col-span-full text-center text-gray-500 py-12">No menu items currently available.</div>';
@@ -532,8 +537,13 @@ document.addEventListener("DOMContentLoaded", () => {
         modalContent.innerHTML = '<div class="text-center py-8 text-gray-500">Loading menu...</div>';
         
         try {
-            const res = await fetch('/api/menu');
-            currentMenu = await res.json();
+            currentMenu = [
+                { id: 1, name: "Wood-Fired Margherita", description: "Classic San Marzano tomato sauce, fresh mozzarella, and basil leaves.", price: 15, category: "Pizza", imageUrl: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&q=80" },
+                { id: 2, name: "Tandoori Mixed Grill", description: "Juicy chicken tikka, lamb seekh kebabs, and tandoori prawns.", price: 25, category: "Grill", imageUrl: "https://images.unsplash.com/photo-1628294895950-9805252327bc?w=800&q=80" },
+                { id: 3, name: "Creamy Butter Chicken", description: "Tender chicken simmered in a rich tomato and butter sauce.", price: 18, category: "Curry", imageUrl: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=800&q=80" },
+                { id: 4, name: "Mushroom Truffle Pasta", description: "Al dente penne tossed in creamy truffle sauce with wild mushrooms.", price: 22, category: "Pasta", imageUrl: "https://images.unsplash.com/photo-1621996311210-ea007f3ccce8?w=800&q=80" },
+                { id: 5, name: "Grilled Salmon Asparagus", description: "Fresh Atlantic salmon with lemon butter and charred asparagus.", price: 28, category: "Seafood", imageUrl: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=800&q=80" }
+            ];
             
             modalContent.innerHTML = '<div class="flex flex-col gap-3"></div>';
             const list = modalContent.querySelector('div');
@@ -658,27 +668,10 @@ document.addEventListener("DOMContentLoaded", () => {
             actionBtn.disabled = true;
             actionBtn.textContent = "Processing...";
             
-            try {
-                await fetch('/api/orders', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        customer_name: customerDetails.name,
-                        customer_email: customerDetails.email,
-                        customer_phone: customerDetails.phone,
-                        item_id: selectedDish.id,
-                        item_name: selectedDish.name,
-                        quantity: quantity,
-                        total_price: selectedDish.price * quantity, // Save original USD total to DB
-                        payment_method: selectedPayment
-                    })
-                });
+            // Simulate network request
+            setTimeout(() => {
                 showSuccessStep();
-            } catch(e) {
-                alert("Payment failed. Please try again.");
-                actionBtn.disabled = false;
-                actionBtn.textContent = `Pay ₹${total}`;
-            }
+            }, 1000);
         };
     };
 
