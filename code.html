@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GREEN PLATE - Family Restaurant</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Work+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#7d5400",
+                        "on-tertiary-container": "#fffbff",
+                        "outline": "#6d7a79",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f9f9fc",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#008282",
+                        "inverse-on-surface": "#f0f0f3",
+                        "tertiary-fixed": "#ffddaf",
+                        "surface": "#f9f9fc",
+                        "on-surface": "#1a1c1e",
+                        "on-secondary-fixed-variant": "#930003",
+                        "surface-dim": "#dadadc",
+                        "primary": "#006767",
+                        "primary-fixed-dim": "#64d8d7",
+                        "on-tertiary-fixed": "#281800",
+                        "on-primary-fixed-variant": "#004f4f",
+                        "tertiary-container": "#9d6b00",
+                        "outline-variant": "#bcc9c8",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#f3fffe",
+                        "secondary-fixed": "#ffdad5",
+                        "surface-container-high": "#e8e8ea",
+                        "secondary-fixed-dim": "#ffb4a9",
+                        "surface-container-highest": "#e2e2e5",
+                        "secondary": "#bc0005",
+                        "background": "#f9f9fc",
+                        "on-tertiary-fixed-variant": "#614000",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f3f3f6",
+                        "on-surface-variant": "#3d4949",
+                        "on-primary-fixed": "#002020",
+                        "on-background": "#1a1c1e",
+                        "on-secondary-container": "#fffbff",
+                        "surface-tint": "#006a6a",
+                        "secondary-container": "#e3241a",
+                        "surface-container": "#eeeef0",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e2e2e5",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#2f3133",
+                        "primary-fixed": "#82f5f4",
+                        "on-secondary-fixed": "#410000",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#64d8d7",
+                        "tertiary-fixed-dim": "#ffba43"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "auto",
+                        "gutter": "24px",
+                        "md": "24px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "xl": "80px",
+                        "max-width": "1280px",
+                        "base": "8px",
+                        "lg": "48px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Work Sans"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-sm": ["Work Sans"],
+                        "body-md": ["Work Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-md": ["Work Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Work Sans', sans-serif; background-color: #f9f9fc; color: #1a1c1e; }
+        h1, h2, h3, h4, h5, h6, .font-headline-xl, .font-headline-lg, .font-headline-md, .font-headline-lg-mobile { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="sticky top-0 z-50 bg-surface shadow-sm w-full transition-all duration-300 ease-in-out">
+<div class="flex justify-between items-center w-full px-4 md:px-margin-desktop max-w-max-width mx-auto h-20">
+<!-- Brand -->
+<a class="font-headline-md text-headline-md font-bold text-primary tracking-tight" href="#">
+                GREEN PLATE
+            </a>
+<!-- Desktop Navigation -->
+<div class="hidden md:flex items-center gap-8">
+<a class="font-body-lg text-body-lg text-primary border-b-2 border-primary pb-1 font-semibold" href="#">Menu</a>
+<a class="font-body-lg text-body-lg text-on-surface-variant hover:text-primary transition-colors" href="#">Orders</a>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-4">
+<button id="cart-btn" aria-label="Shopping Cart" class="p-2 text-on-surface-variant hover:text-primary transition-colors rounded-full hover:bg-surface-container-low">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">shopping_cart</span>
+</button>
+<button aria-label="User Profile" class="p-2 text-on-surface-variant hover:text-primary transition-colors rounded-full hover:bg-surface-container-low">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">account_circle</span>
+</button>
+<button aria-label="Notifications" class="p-2 text-on-surface-variant hover:text-primary transition-colors rounded-full hover:bg-surface-container-low">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+<!-- Mobile Menu Toggle -->
+<button aria-label="Toggle Menu" class="md:hidden p-2 text-on-surface-variant">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow">
+<!-- Hero Section -->
+<section id="hero-scroll-section" class="relative w-full h-[300vh] bg-black">
+<div class="sticky top-20 h-[calc(100vh-80px)] w-full overflow-hidden">
+<canvas id="hero-canvas" class="w-full h-full object-cover"></canvas>
+</div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const canvas = document.getElementById('hero-canvas');
+    const context = canvas.getContext('2d');
+    const frameCount = 150;
+    const currentFrame = index => `frames/ezgif-frame-${index.toString().padStart(3, '0')}.jpg`;
+    
+    const images = [];
+    let loadedImages = 0;
+    let initialImageLoaded = false;
+
+    // Load first image to set dimensions immediately
+    const firstImg = new Image();
+    firstImg.src = currentFrame(1);
+    firstImg.onload = function() {
+        canvas.width = firstImg.width || 800;
+        canvas.height = firstImg.height || 600;
+        context.drawImage(firstImg, 0, 0, canvas.width, canvas.height);
+        initialImageLoaded = true;
+    };
+    images[1] = firstImg;
+
+    // Preload rest of the images
+    const preloadImages = () => {
+        for (let i = 2; i <= frameCount; i++) {
+            const img = new Image();
+            img.src = currentFrame(i);
+            images[i] = img;
+        }
+    };
+    preloadImages();
+
+    window.addEventListener('scroll', () => {  
+        const heroSection = document.getElementById('hero-scroll-section');
+        if(!heroSection || !initialImageLoaded) return;
+        
+        const rect = heroSection.getBoundingClientRect();
+        
+        // Navigation height is 80px (h-20)
+        let scrollProgress = 0;
+        if(rect.top <= 80) {
+            const scrollableDistance = rect.height - (window.innerHeight - 80);
+            const scrolled = 80 - rect.top;
+            scrollProgress = Math.max(0, Math.min(1, scrolled / scrollableDistance));
+        }
+
+        const frameIndex = Math.min(
+            frameCount,
+            Math.floor(scrollProgress * (frameCount - 1)) + 1
+        );
+
+        requestAnimationFrame(() => {
+            const img = images[frameIndex];
+            if(img && img.complete) {
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(img, 0, 0, canvas.width, canvas.height);
+            }
+        });
+    });
+});
+</script>
+<!-- Features Section -->
+<section class="py-xl bg-surface">
+<div class="max-w-max-width mx-auto px-4 md:px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Feature 1 -->
+<div class="flex flex-col items-center text-center p-8 bg-surface-container-lowest rounded-2xl border border-surface-variant hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all group">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-on-primary transition-colors text-primary">
+<span class="material-symbols-outlined text-3xl">restaurant</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-on-surface">Fresh Ingredients</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">We source only the highest quality, farm-fresh produce daily to ensure vibrant flavors in every dish.</p>
+</div>
+<!-- Feature 2 -->
+<div class="flex flex-col items-center text-center p-8 bg-surface-container-lowest rounded-2xl border border-surface-variant hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all group">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-on-primary transition-colors text-primary">
+<span class="material-symbols-outlined text-3xl">family_restroom</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-on-surface">Family Friendly</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">A warm, welcoming atmosphere designed for families to gather, celebrate, and enjoy great food together.</p>
+</div>
+<!-- Feature 3 -->
+<div class="flex flex-col items-center text-center p-8 bg-surface-container-lowest rounded-2xl border border-surface-variant hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all group">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-on-primary transition-colors text-primary">
+<span class="material-symbols-outlined text-3xl">local_shipping</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-on-surface">Fast Delivery</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Hot and fresh meals delivered straight to your door with our reliable and speedy delivery service.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Menu Highlights (Bento Grid) -->
+<section class="py-xl bg-surface-container-low">
+<div class="max-w-max-width mx-auto px-4 md:px-margin-desktop">
+<div class="text-center mb-12 flex flex-col items-center">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-4">Popular Dishes</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Discover our chef's recommended specialties, crafted with passion and traditional recipes.</p>
+</div>
+<div id="menu-grid" class="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[250px]">
+    <!-- Menu items will be injected here by JavaScript -->
+    <div class="col-span-full text-center text-gray-500 py-12">Loading menu...</div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+    const menuGrid = document.getElementById('menu-grid');
+    
+    try {
+        const response = await fetch('/api/menu');
+        const items = await response.json();
+        
+        if(items.length === 0) {
+            menuGrid.innerHTML = '<div class="col-span-full text-center text-gray-500 py-12">No menu items currently available.</div>';
+            return;
+        }
+
+        menuGrid.innerHTML = '';
+        items.forEach((item, index) => {
+            // Make the first item larger (span 2x2) and 4th item span 2 cols like the original design, if we want
+            // For simplicity, we'll just make them standard sizes, or apply special classes based on index
+            let spanClasses = '';
+            if (index === 0) spanClasses = 'md:col-span-2 md:row-span-2';
+            else if (index === 3) spanClasses = 'md:col-span-2';
+
+            const card = document.createElement('div');
+            card.className = `${spanClasses} relative rounded-2xl overflow-hidden group shadow-md hover:shadow-xl transition-shadow bg-surface`;
+            
+            const categoryBadge = item.category ? `<span class="inline-block px-3 py-1 bg-surface/20 backdrop-blur-md text-white font-label-sm text-label-sm rounded-full mb-2 md:mb-3 border border-white/30">${item.category}</span>` : '';
+            const desc = item.description ? `<p class="font-body-md text-body-md text-gray-200 hidden md:block">${item.description}</p>` : '';
+
+            card.innerHTML = `
+                <img class="w-full h-full object-cover" src="${item.imageUrl || 'https://via.placeholder.com/400'}" alt="${item.name}"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-5 md:p-8">
+                    <div class="flex justify-between items-end">
+                        <div>
+                            ${categoryBadge}
+                            <h3 class="font-headline-lg text-headline-md md:text-headline-lg text-white mb-1">${item.name}</h3>
+                            ${desc}
+                        </div>
+                        <span class="font-headline-md text-headline-md text-primary-fixed">$${parseFloat(item.price).toFixed(2)}</span>
+                    </div>
+                </div>
+            `;
+            menuGrid.appendChild(card);
+        });
+    } catch(err) {
+        console.error("Error loading menu:", err);
+        menuGrid.innerHTML = '<div class="col-span-full text-center text-red-500 py-12">Failed to load menu.</div>';
+    }
+});
+</script>
+<div class="flex justify-center mt-10">
+<button class="bg-surface text-primary border-2 border-primary px-8 py-3 rounded-full font-label-md text-label-md hover:bg-primary/5 transition-colors">
+                        Explore Full Menu
+                    </button>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-xl bg-surface overflow-hidden relative">
+<div class="absolute top-0 right-0 w-[500px] h-[500px] bg-tertiary/5 rounded-full blur-3xl -z-10 translate-x-1/2 -translate-y-1/2"></div>
+<div class="max-w-max-width mx-auto px-4 md:px-margin-desktop">
+<div class="text-center mb-12">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-4">What Our Guests Say</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Review 1 -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-surface-variant shadow-sm relative">
+<span class="material-symbols-outlined text-4xl text-primary/20 absolute top-6 right-6">format_quote</span>
+<div class="flex text-tertiary-fixed-dim mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 italic">"Absolutely phenomenal experience! The wood-fired pizza transported me back to Italy. The crust was perfect, and the ingredients tasted so incredibly fresh. Highly recommend for a family dinner."</p>
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-full object-cover border-2 border-surface-variant" data-alt="A small, circular profile picture of a smiling woman with dark hair in a casual setting. Professional lighting, shallow depth of field. Soft, warm tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-gA5W4L4fP3i1f0uAvb3L3Wu-v8HWLCSqhYZqve6VD6yxweGdpUZEqVrVD2uG57Jk5_IFy6URxeruBdBhQF-8vam-98g4q0k3I86bFUy1G8HAEGxXueqAJqYACHGadkCs5x-qzETPUoGtruVT2EvETcQ8-XItoSpYGAREigODtM95Pw01PTfxhV215Ni29MVwpgV1MXZ7Hszf2VutOX3jub554F3WtF5MwWu8hQZDMjOWwWT85Lxm"/>
+<div>
+<h4 class="font-headline-md text-base font-bold text-on-surface">Sarah Jenkins</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Local Guide</span>
+</div>
+</div>
+</div>
+<!-- Review 2 -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-surface-variant shadow-sm relative">
+<span class="material-symbols-outlined text-4xl text-primary/20 absolute top-6 right-6">format_quote</span>
+<div class="flex text-tertiary-fixed-dim mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star_half</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 italic">"Green Plate is our go-to for Friday nights. The Butter Chicken is creamy and rich without being too heavy. The staff is always welcoming and great with our kids. A true gem in the neighborhood."</p>
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-full object-cover border-2 border-surface-variant" data-alt="A small, circular profile picture of a man with glasses and a short beard, wearing a casual button-down shirt. Clean, modern aesthetic, bright lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrqiqyXDXmeIEccTAct8xS9DdoKgM-5iU4MNqQLIHDEYJ-DggbP5j4G6YCLy3bueUOCWJqptQxauVLfgGV1D5_2INWWNWwNpWxiW91fD9K66lIKdjkJh99g8mP97SR_5_jh-NJLpx_wHHcVC5ZdKU8N5xi5DiQUS9Z_P4KwX7lLxQ9aZxDT-ikXwimg5M8RPWy8LJi-Gi14KAAEDVhUls_q26yOLFzxS8aTO8gH5OkXOu4MpTp6WLo"/>
+<div>
+<h4 class="font-headline-md text-base font-bold text-on-surface">David Miller</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Frequent Diner</span>
+</div>
+</div>
+</div>
+<!-- Review 3 -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-surface-variant shadow-sm relative">
+<span class="material-symbols-outlined text-4xl text-primary/20 absolute top-6 right-6">format_quote</span>
+<div class="flex text-tertiary-fixed-dim mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 italic">"I was blown away by the Tandoori Mixed Grill. The spices were spot on, and everything was cooked to juicy perfection. Fast delivery too! My new favorite spot for Indian and Continental food."</p>
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-full object-cover border-2 border-surface-variant" data-alt="A small, circular profile picture of a young woman with a bright smile, wearing a colorful top. Sunny, outdoor lighting in the background. Vibrant and friendly." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABcfguQDiWVQsBDUP0PDw4ep9y1P0DrXjqzjlg5Y3MWhI4N0nfFH0q8ApRvwS3Su0RXht7tQNwCV3t68-zlCxcflVbJqUJz0Ec0J10cIQcWJENifdDKxn4QjJSoeUHA9bVMRrWOBWh0-ShrhQ4dzfgX7BElud0qSI5kkqWcBiLEJds6oRjUWnxAUZ8ucfdTvZK4MkIKru9S0gI0TqhrwDiEzzEtGe1VOioOIcyWfWIlS2KC13Gb6Di"/>
+<div>
+<h4 class="font-headline-md text-base font-bold text-on-surface">Priya Patel</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Food Enthusiast</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Component from JSON -->
+<footer class="bg-surface-container-highest w-full py-lg px-4 md:px-margin-desktop max-w-max-width mx-auto flex flex-col md:flex-row justify-between items-center gap-md transition-opacity duration-200">
+<div class="flex flex-col items-center md:items-start gap-2">
+<span class="font-headline-md text-headline-md font-bold text-primary">GREEN PLATE</span>
+<span class="font-label-md text-label-md text-on-surface-variant">© 2024 Green Plate. All rights reserved.</span>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary underline transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary underline transition-colors" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary underline transition-colors" href="#">Contact Us</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary underline transition-colors" href="#">Locations</a>
+<a id="admin-link" class="font-label-md text-label-md text-on-surface-variant hover:text-primary underline transition-colors cursor-pointer">Admin Panel</a>
+</div>
+</footer>
+
+<!-- Admin Login Modal -->
+<div id="admin-modal" class="fixed inset-0 z-[110] bg-black/50 hidden items-center justify-center p-4 backdrop-blur-sm transition-opacity">
+    <div class="bg-surface w-full max-w-sm rounded-2xl shadow-2xl overflow-hidden flex flex-col p-6">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="font-headline-md text-xl font-bold">Admin Login</h2>
+            <button id="close-admin-modal" class="p-1 hover:bg-surface-variant rounded-full transition text-on-surface-variant">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <div class="flex flex-col gap-4 mb-6">
+            <div>
+                <label class="block text-sm font-bold mb-1">Name</label>
+                <input type="text" id="admin-name" class="w-full p-3 rounded-lg border border-surface-variant focus:border-primary outline-none">
+            </div>
+            <div>
+                <label class="block text-sm font-bold mb-1">Password</label>
+                <input type="password" id="admin-password" class="w-full p-3 rounded-lg border border-surface-variant focus:border-primary outline-none">
+            </div>
+        </div>
+        <button id="admin-login-btn" class="w-full bg-primary text-on-primary py-3 rounded-xl font-bold hover:bg-primary-fixed-dim transition shadow-md">
+            Login
+        </button>
+    </div>
+</div>
+
+<!-- Shopping Cart Modal -->
+<div id="cart-modal" class="fixed inset-0 z-[100] bg-black/50 hidden items-center justify-center p-4 backdrop-blur-sm transition-opacity">
+    <div class="bg-surface w-full max-w-md rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+        <!-- Header -->
+        <div class="p-4 border-b border-surface-variant flex justify-between items-center bg-primary text-on-primary">
+            <h2 id="modal-title" class="font-headline-md text-xl font-bold">Menu</h2>
+            <button id="close-modal" class="p-1 hover:bg-primary-fixed-dim rounded-full transition text-on-primary">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        
+        <!-- Content Area -->
+        <div id="modal-content" class="p-4 overflow-y-auto flex-1 bg-surface-container-lowest">
+            <!-- Dynamic content injected here -->
+        </div>
+
+        <!-- Footer actions (hidden by default) -->
+        <div id="modal-footer" class="p-4 border-t border-surface-variant bg-surface hidden">
+            <button id="modal-action-btn" class="w-full bg-primary text-on-primary py-3 rounded-xl font-bold hover:bg-primary-fixed-dim transition shadow-md">
+                Continue
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const cartBtn = document.getElementById('cart-btn');
+    const modal = document.getElementById('cart-modal');
+    const closeModalBtn = document.getElementById('close-modal');
+    const modalContent = document.getElementById('modal-content');
+    const modalTitle = document.getElementById('modal-title');
+    const modalFooter = document.getElementById('modal-footer');
+    const actionBtn = document.getElementById('modal-action-btn');
+
+    let currentMenu = [];
+    let selectedDish = null;
+    let quantity = 1;
+    let customerDetails = {};
+
+    // Convert USD to INR (~83 multiplier for display)
+    const toINR = (usd) => Math.round(usd * 83);
+
+    const openModal = () => {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        if(Object.keys(customerDetails).length === 0) {
+            showUserDetailsStep();
+        } else {
+            showMenuStep();
+        }
+    };
+
+    const closeModal = () => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        selectedDish = null;
+        quantity = 1;
+    };
+
+    cartBtn.addEventListener('click', openModal);
+    closeModalBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if(e.target === modal) closeModal();
+    });
+
+    // Step 0: User Details
+    const showUserDetailsStep = () => {
+        modalTitle.textContent = "Your Details";
+        modalFooter.classList.remove('hidden');
+        
+        modalContent.innerHTML = `
+            <div class="py-4">
+                <p class="text-on-surface-variant mb-6 text-sm">Please provide your details before ordering.</p>
+                <div class="flex flex-col gap-4">
+                    <div>
+                        <label class="block text-sm font-bold mb-1">Name *</label>
+                        <input type="text" id="cust-name" class="w-full p-3 rounded-lg border border-surface-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="John Doe">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold mb-1">Email</label>
+                        <input type="email" id="cust-email" class="w-full p-3 rounded-lg border border-surface-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="john@example.com">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold mb-1">Phone Number *</label>
+                        <input type="tel" id="cust-phone" class="w-full p-3 rounded-lg border border-surface-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="+91 98765 43210">
+                    </div>
+                </div>
+                <p id="details-error" class="text-red-500 text-sm mt-3 hidden">Please fill in required fields.</p>
+            </div>
+        `;
+        
+        actionBtn.textContent = "Submit Details";
+        actionBtn.onclick = () => {
+            const name = document.getElementById('cust-name').value;
+            const email = document.getElementById('cust-email').value;
+            const phone = document.getElementById('cust-phone').value;
+            
+            if(!name || !phone) {
+                document.getElementById('details-error').classList.remove('hidden');
+                return;
+            }
+            
+            customerDetails = { name, email, phone };
+            showMenuStep();
+        };
+    };
+
+    // Step 1: Show Menu
+    const showMenuStep = async () => {
+        modalTitle.textContent = "Select a Dish";
+        modalFooter.classList.add('hidden');
+        modalContent.innerHTML = '<div class="text-center py-8 text-gray-500">Loading menu...</div>';
+        
+        try {
+            const res = await fetch('/api/menu');
+            currentMenu = await res.json();
+            
+            modalContent.innerHTML = '<div class="flex flex-col gap-3"></div>';
+            const list = modalContent.querySelector('div');
+            
+            currentMenu.forEach(item => {
+                const priceINR = toINR(item.price);
+                const itemEl = document.createElement('div');
+                itemEl.className = "flex items-center gap-4 p-3 rounded-xl border border-surface-variant hover:border-primary cursor-pointer hover:bg-primary/5 transition";
+                itemEl.innerHTML = `
+                    <img src="${item.imageUrl || 'https://via.placeholder.com/60'}" class="w-16 h-16 rounded-lg object-cover">
+                    <div class="flex-1">
+                        <h4 class="font-bold text-on-surface">${item.name}</h4>
+                        <p class="text-primary font-medium">₹${priceINR}</p>
+                    </div>
+                    <span class="material-symbols-outlined text-primary">chevron_right</span>
+                `;
+                itemEl.onclick = () => showQuantityStep(item);
+                list.appendChild(itemEl);
+            });
+        } catch(e) {
+            modalContent.innerHTML = '<div class="text-center py-8 text-red-500">Error loading menu.</div>';
+        }
+    };
+
+    // Step 2: Show Quantity
+    const showQuantityStep = (dish) => {
+        selectedDish = dish;
+        quantity = 1;
+        modalTitle.textContent = "Quantity";
+        
+        const priceINR = toINR(dish.price);
+        
+        const updateDisplay = () => {
+            document.getElementById('qty-display').textContent = quantity;
+            document.getElementById('total-display').textContent = `Total: ₹${priceINR * quantity}`;
+        };
+
+        modalContent.innerHTML = `
+            <div class="flex flex-col items-center py-6 text-center">
+                <img src="${dish.imageUrl || 'https://via.placeholder.com/120'}" class="w-32 h-32 rounded-2xl object-cover mb-4 shadow-md">
+                <h3 class="text-2xl font-bold text-on-surface mb-1">${dish.name}</h3>
+                <p class="text-on-surface-variant mb-6">₹${priceINR} per item</p>
+                
+                <div class="flex items-center gap-6 bg-surface-container-low p-2 rounded-full border border-surface-variant">
+                    <button id="btn-minus" class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-primary hover:bg-gray-50 transition">
+                        <span class="material-symbols-outlined">remove</span>
+                    </button>
+                    <span id="qty-display" class="text-2xl font-bold w-8">${quantity}</span>
+                    <button id="btn-plus" class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-primary hover:bg-gray-50 transition">
+                        <span class="material-symbols-outlined">add</span>
+                    </button>
+                </div>
+                
+                <div id="total-display" class="mt-6 text-xl font-bold text-primary">Total: ₹${priceINR}</div>
+            </div>
+        `;
+        
+        document.getElementById('btn-minus').onclick = () => {
+            if(quantity > 1) { quantity--; updateDisplay(); }
+        };
+        document.getElementById('btn-plus').onclick = () => {
+            quantity++; updateDisplay();
+        };
+
+        modalFooter.classList.remove('hidden');
+        actionBtn.textContent = "Proceed to Payment";
+        actionBtn.onclick = () => showPaymentStep();
+    };
+
+    // Step 3: Payment Method
+    const showPaymentStep = () => {
+        modalTitle.textContent = "Payment Method";
+        const priceINR = toINR(selectedDish.price);
+        const total = priceINR * quantity;
+        let selectedPayment = 'UPI'; // default
+
+        const renderMethods = () => {
+            const methods = [
+                { id: 'UPI', icon: 'qr_code_scanner', label: 'UPI / QR Code' },
+                { id: 'CARD', icon: 'credit_card', label: 'Credit/Debit Card' },
+                { id: 'CASH', icon: 'payments', label: 'Cash on Delivery' }
+            ];
+            
+            return methods.map(m => `
+                <div class="payment-option flex items-center gap-4 p-4 rounded-xl border ${selectedPayment === m.id ? 'border-primary bg-primary/5' : 'border-surface-variant'} cursor-pointer transition mb-3" data-id="${m.id}">
+                    <span class="material-symbols-outlined text-primary">${m.icon}</span>
+                    <span class="font-medium flex-1">${m.label}</span>
+                    <span class="material-symbols-outlined text-primary">
+                        ${selectedPayment === m.id ? 'radio_button_checked' : 'radio_button_unchecked'}
+                    </span>
+                </div>
+            `).join('');
+        };
+
+        const updateView = () => {
+            modalContent.innerHTML = `
+                <div class="mb-6 bg-surface-container-low p-4 rounded-xl flex justify-between items-center">
+                    <div>
+                        <p class="text-sm text-on-surface-variant">Amount to Pay</p>
+                        <p class="text-2xl font-bold text-on-surface">₹${total}</p>
+                    </div>
+                </div>
+                <h4 class="font-bold mb-3 text-on-surface">Select Method</h4>
+                <div id="payment-list">
+                    ${renderMethods()}
+                </div>
+            `;
+            
+            document.querySelectorAll('.payment-option').forEach(el => {
+                el.onclick = () => {
+                    selectedPayment = el.getAttribute('data-id');
+                    updateView(); // re-render to update radio buttons
+                };
+            });
+        };
+        
+        updateView();
+
+        actionBtn.textContent = `Pay ₹${total}`;
+        actionBtn.onclick = async () => {
+            // Disable button during request
+            actionBtn.disabled = true;
+            actionBtn.textContent = "Processing...";
+            
+            try {
+                await fetch('/api/orders', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        customer_name: customerDetails.name,
+                        customer_email: customerDetails.email,
+                        customer_phone: customerDetails.phone,
+                        item_id: selectedDish.id,
+                        item_name: selectedDish.name,
+                        quantity: quantity,
+                        total_price: selectedDish.price * quantity, // Save original USD total to DB
+                        payment_method: selectedPayment
+                    })
+                });
+                showSuccessStep();
+            } catch(e) {
+                alert("Payment failed. Please try again.");
+                actionBtn.disabled = false;
+                actionBtn.textContent = `Pay ₹${total}`;
+            }
+        };
+    };
+
+    // Step 4: Success
+    const showSuccessStep = () => {
+        modalTitle.textContent = "Order Status";
+        modalFooter.classList.add('hidden');
+        
+        modalContent.innerHTML = `
+            <div class="flex flex-col items-center justify-center py-12 text-center">
+                <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mb-6 text-green-600">
+                    <span class="material-symbols-outlined text-6xl">check_circle</span>
+                </div>
+                <h3 class="text-2xl font-bold text-on-surface mb-2">ORDER SUCCESSFULLY PLACED</h3>
+                <p class="text-on-surface-variant mb-8">Your delicious meal is being prepared.</p>
+                
+                <button id="done-btn" class="bg-primary text-on-primary px-8 py-3 rounded-full font-bold hover:bg-primary-fixed-dim transition shadow-md">
+                    Done
+                </button>
+            </div>
+        `;
+        
+        document.getElementById('done-btn').onclick = () => {
+            closeModal();
+            customerDetails = {}; // Reset details for next order
+        };
+    };
+
+    // Admin Login Logic
+    const adminLink = document.getElementById('admin-link');
+    const adminModal = document.getElementById('admin-modal');
+    const closeAdminModal = document.getElementById('close-admin-modal');
+    const adminLoginBtn = document.getElementById('admin-login-btn');
+
+    adminLink.addEventListener('click', () => {
+        adminModal.classList.remove('hidden');
+        adminModal.classList.add('flex');
+    });
+
+    closeAdminModal.addEventListener('click', () => {
+        adminModal.classList.add('hidden');
+        adminModal.classList.remove('flex');
+    });
+
+    adminLoginBtn.addEventListener('click', () => {
+        // Accept any credentials as requested
+        window.location.href = '/admin.html';
+    });
+
+});
+</script>
+
+</body></html>

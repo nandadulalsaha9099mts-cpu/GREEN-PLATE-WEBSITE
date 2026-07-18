@@ -1,0 +1,6 @@
+__pycache__/
+database.sqlite
+mingit/
+mingit.zip
+upload_to_github.py
+*.ps1
